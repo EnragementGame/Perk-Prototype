@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SpawnData" format=3 uid="uid://bubt0h851t26q"]
+
+[ext_resource type="Script" uid="uid://b177iidmvafpg" path="res://scripts/resource/spawn_data.gd" id="1_o7asf"]
+[ext_resource type="PackedScene" uid="uid://bdlorg531d1gg" path="res://scenes/enemies/enemy_horde.tscn" id="1_rhvac"]
+
+[resource]
+script = ExtResource("1_o7asf")
+spawn_id = &"Horde"
+enemy_scene = ExtResource("1_rhvac")
+spawn_value = 1
+exp_value = 5
+spawn_min = 3
+spawn_max = 8
+metadata/_custom_type_script = "uid://b177iidmvafpg"

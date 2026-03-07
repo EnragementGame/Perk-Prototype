@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="stats" format=3 uid="uid://cnsu2f3w714js"]
+
+[ext_resource type="Script" uid="uid://d4mytsxxc6s7q" path="res://scripts/resource/stats.gd" id="1_l7pyp"]
+
+[resource]
+script = ExtResource("1_l7pyp")
+speed = 8.5
+jump_height = 10.0
+jumps = 1
+health = 100
+metadata/_custom_type_script = "uid://d4mytsxxc6s7q"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://cqv8nih6u1rf8"]
+
+[ext_resource type="Script" uid="uid://cva3hrhnwp0ii" path="res://scripts/resource/weapon_stats.gd" id="1_hue4t"]
+
+[resource]
+script = ExtResource("1_hue4t")
+damage = 10
+attack_speed = 0.3
+range = 1.5
+proc_multiplier = 2.0
+weapon_type = 1
+hit_hight = 2.5
+hit_width = 2.0
+area_offset = Vector3(0, -0.45, -1.25)
+metadata/_custom_type_script = "uid://cva3hrhnwp0ii"
