@@ -1,5 +1,7 @@
 extends Area3D
 
+signal enemy_hit(hit_enemy : Node3D)
+
 var camera : Camera3D
 var hit_detection : CollisionShape3D
 
@@ -19,4 +21,4 @@ func melee(weapon : Weapon):
 			var query = PhysicsRayQueryParameters3D.create(from, to, 0b0110)
 			var results = space_state.intersect_ray(query)
 			if results.get("collider") == enemy:
-				enemy.get_node("HealthManager").take_damage(weapon.damage, self)
+				enemy_hit.emit(enemy)

@@ -1,5 +1,7 @@
 extends Node3D
 
+signal enemy_hit(hit_enemy : Node3D)
+
 var camera : Camera3D
 @export var mat : StandardMaterial3D
 
@@ -20,7 +22,7 @@ func shoot(weapon : Weapon):
 			var hit : Node3D = results.get("collider")
 			draw_bullets(from, results.position)
 			if hit.has_node("Enemy"):
-				hit.get_node("HealthManager").take_damage(weapon.damage, self)
+				enemy_hit.emit(hit)
 
 func draw_bullets(pos_one : Vector3, pos_two : Vector3):
 		print("Drawing Bullet")

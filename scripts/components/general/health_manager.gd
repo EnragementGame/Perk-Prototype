@@ -10,6 +10,7 @@ var health : int
 var has_osp : bool
 var osp_threshold : int
 var can_take_damage : bool = true
+var dead : bool = false
 
 func _ready() -> void:
 	stats_manager = get_component("StatsManager")
@@ -17,7 +18,7 @@ func _ready() -> void:
 	print(stats_manager)
 
 func take_damage(damage : int, dealer : Node3D):
-	if !can_take_damage:
+	if !can_take_damage || dead:
 		return
 	health -= damage
 	print(health)
@@ -33,5 +34,5 @@ func heal_health(heal_amount : int, healer : Node3D):
 	heal.emit(get_parent(), healer)
 	
 func die(killer : Node3D):
-	can_take_damage = false
+	dead = false
 	death.emit(get_parent(), killer)
