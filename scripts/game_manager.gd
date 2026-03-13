@@ -66,7 +66,6 @@ func spawn_enemy():
 		spawned_enemy = enemies["Horde"].enemy_scene.instantiate()
 		spawned_enemy.get_node("PlayerTracker").player = player
 		spawned_enemy.get_node("HealthManager").death.connect(remove_enemy)
-		spawned_enemy.get_node("Enemy").experince.connect(player.get_node("PerkManager").gain_exp)
 		add_child(spawned_enemy)
 		enemies_alive += 1
 		spawned_enemy.position = spawn_position

@@ -1,5 +1,7 @@
 class_name ItemManager extends Component
 
+signal update_gold_display()
+
 var gold : int
 
 var stats_manager : StatsManager

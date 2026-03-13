@@ -1,5 +1,7 @@
 class_name PerkManager extends Component
 
+signal update_exp_display()
+
 signal gained_exp(exp_gained : int)
 signal leveled_up()
 

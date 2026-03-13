@@ -34,5 +34,5 @@ func heal_health(heal_amount : int, healer : Node3D):
 	heal.emit(get_parent(), healer)
 	
 func die(killer : Node3D):
-	dead = false
+	dead = true
 	death.emit(get_parent(), killer)
