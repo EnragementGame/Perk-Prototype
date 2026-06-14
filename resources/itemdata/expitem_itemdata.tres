@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://oqjx3j5hbsqc"]
+
+[ext_resource type="Script" uid="uid://1c3puolx8ekt" path="res://scripts/components/item/items/expitem.gd" id="1_0m3e8"]
+[ext_resource type="Script" uid="uid://4hxyl2l8k48c" path="res://scripts/resource/item_data.gd" id="2_4ijj1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_iu8ay"]
+size = Vector3(0.3, 0.4, 0.1)
+
+[resource]
+script = ExtResource("2_4ijj1")
+item_id = &"ExpItem"
+item_model = SubResource("BoxMesh_iu8ay")
+item_component = ExtResource("1_0m3e8")
+metadata/_custom_type_script = "uid://4hxyl2l8k48c"

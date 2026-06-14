@@ -1,6 +1,6 @@
 class_name Component extends Node
 
-func get_component(component : String) -> Component:
+func get_component(component : String) -> Component: ## Get another component on the parent object
 	var found_component : Component
 	if get_parent().has_node(component):
 		print("Found Componet:" + component + " | On:" + get_parent().name)
@@ -9,7 +9,8 @@ func get_component(component : String) -> Component:
 	else:
 		push_warning("Required Componet of type:" + component + " required, script may not function properly")
 		return null
-func get_parent_component() -> Component:
+
+func get_parent_component() -> Component: ## Get the parent component
 	var found_component : Component
 	if get_parent().type == Component:
 		print("Found Parent Componet")
@@ -18,7 +19,8 @@ func get_parent_component() -> Component:
 	else:
 		push_warning("Parent is not a Component, can't get parent")
 		return null
-func get_component_in_child(component : String, child : int) -> Component:
+
+func get_component_in_child(component : String, child : int) -> Component: ## Get a child component
 	var found_component : Component
 	if get_child(child).has_node(component):
 		print("Found Componet:" + component + " | On:" + get_child(child).name)

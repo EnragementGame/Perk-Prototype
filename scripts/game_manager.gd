@@ -31,18 +31,28 @@ func prepare_map():
 		var ray_end : Vector3 = spawn_ray(spawn_start).get("position")
 		prefab = prefabs[prefab_id].instantiate()
 		level.add_child(prefab)
-		var prefab_footprint : Area3D
-		var replace_check_limit : int
-		for spawned in spawned_prefabs:
-			while spawned.get_node("Footprint").has_overlapping_areas() && replace_check_limit < 5:
-				print("Redoing placement check")
-				spawn_start = get_random_map_pos()
-				ray_end = spawn_ray(spawn_start).get("position")
-				replace_check_limit += 1
 		spawned_prefabs.append(prefab)
 		prefab.position = ray_end
-		prefab.rotation.y = randf_range(0,3)
-		
+		prefab.rotation.y = randf_range(0,4)
+	prefab_overlap_check()
+
+func prefab_overlap_check():
+	print("Redoing placement check")
+	for prefab in spawned_prefabs:
+		var prefab_footprint : Prefab = prefab.get_node("Prefab")
+		var replace_check_limit : int
+		print("Starting check for: " + prefab.name)
+		print(prefab_footprint.obstructed)
+		while prefab_footprint.obstructed && replace_check_limit < 5:
+				print(prefab.name + " has overlap, replacing")
+				var replace_start : Vector3 = get_random_map_pos()
+				var ray_end : Vector3 = spawn_ray(replace_start).get("position")
+				prefab.position = ray_end
+				replace_check_limit += 1
+		if replace_check_limit >= 5:
+			print("Prefab check failed too many times, deleting prefab")
+			prefab.queue_free()
+
 
 func spawn_interactables():
 	var spawn_start = get_random_map_pos()
