@@ -14,7 +14,8 @@ var dead : bool = false
 
 func _ready() -> void:
 	stats_manager = get_component("StatsManager")
-	health = stats_manager.health
+	stats_manager.updated_health.connect(update_health)
+	health = stats_manager.max_health
 	print(stats_manager)
 
 func take_damage(damage : int, dealer : Node3D):
@@ -29,10 +30,14 @@ func take_damage(damage : int, dealer : Node3D):
 	
 func heal_health(heal_amount : int, healer : Node3D):
 	health += heal_amount
-	if health > stats_manager.health:
-		health = stats_manager.health
+	if health > stats_manager.max_health:
+		health = stats_manager.max_health
 	heal.emit(get_parent(), healer)
 	
 func die(killer : Node3D):
 	dead = true
 	death.emit(get_parent(), killer)
+	
+func update_health(old_health : int, new_health : int):
+	var missing_health : int = health - old_health
+	health = new_health - missing_health

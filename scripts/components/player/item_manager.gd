@@ -5,11 +5,13 @@ signal update_gold_display()
 var gold : int
 
 var stats_manager : StatsManager
+var health_manager : HealthManager
 var weapon_manager : WeaponManager
 var perk_manager : PerkManager
 
 func _ready() -> void:
 	stats_manager = get_component("StatsManager")
+	health_manager = get_component("HealthManager")
 	weapon_manager = get_component("WeaponManager")
 	perk_manager = get_component("PerkManager")
 

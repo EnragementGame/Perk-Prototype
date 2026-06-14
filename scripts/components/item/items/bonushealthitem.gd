@@ -1,11 +1,12 @@
 class_name BonusHealthItem extends Item
 
+var stat_manager : StatsManager
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func on_pickup(amount : int):
+	if !stat_manager:
+		stat_manager = item_manager.stats_manager
+	update_health(amount)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func update_health(amount : int):
+	stat_manager.bonus_health += 50 * amount
+	stat_manager.recalculate_health()
